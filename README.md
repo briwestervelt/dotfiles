@@ -2,8 +2,7 @@
 
 ## Prerequisites 
 
-- Install Arch Linux using the [guide on the arch wiki](https://wiki.archlinux.org/title/installation_guide) and boot your new system to the tty
-    If you're using wifi, don't forget to pacstrap networkmanager before rebooting!
+- Install Arch Linux using the [guide on the arch wiki](https://wiki.archlinux.org/title/installation_guide) and boot your new system to the tty. If you're using wifi, don't forget to pacstrap networkmanager before rebooting!
 - Install all the packages we'll need for out scripts
     ``pacman -S sudo git``
 - Create your user
@@ -19,7 +18,7 @@
 
 - Clone this repository in your home directory
     ``cd ~``
-    ``git clone https://github.com/briwestervelt/dotfiles.git``
+    ``git clone git@github.com:briwestervelt/dotfiles.git``
 - (Optional) Review/edit the packages to be installed and services to be initialized
     - ``~/dotfiles/init_scripts/settings/packages_base_pacman``
     - ``~/dotfiles/init_scripts/settings/packages_base_aur``

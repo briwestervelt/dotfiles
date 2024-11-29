@@ -1,0 +1,5 @@
+*.log
+nvim/backup
+nvim/swap
+nvim/undo
+

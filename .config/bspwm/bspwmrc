@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# Give slow monitors some time to wake up
+if echo $HOSTNAME | grep -q PC2; then
+    bspc query -M > /dev/null
+    sleep 3
+fi
+
+SYS_SXHKDRC=/usr/share/doc/bspwm/examples/sxhkdrc
+USR_SXHKDRC=~/.config/sxhkd/sxhkdrc
+pgrep -x sxhkd > /dev/null || sxhkd -c $USR_SXHKDRC $SYS_SXHKDRC &
+
+bspc config border_width         1
+bspc config window_gap           2
+bspc config split_ratio          0.50
+
+bspc config top_padding          24
+bspc config bottom_padding       1
+bspc config left_padding         1
+bspc config right_padding        1
+
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc config normal_border_color     "#000000"
+bspc config active_border_color     "#000000"
+bspc config focused_border_color    "#ebdbb2"
+bspc config presel_feedback_color   "#cc241d"
+
+NUM_DESKTOPS=10
+connected_displays=($(bspc query -M --names))
+num_displays=${#connected_displays[@]}
+desktops_per_disp=$(($NUM_DESKTOPS/$num_displays))
+label_start=1
+for disp in ${connected_displays[@]}; do
+    label_end=$(($label_start + $desktops_per_disp - 1))
+    disp_labels=$(seq $label_start $label_end)
+    bspc monitor $disp -d $disp_labels
+    label_start=$(($label_end + 1))
+done
+
+~/.config/polybar/launch_multimonitor.sh
+

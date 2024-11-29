@@ -1,0 +1,6 @@
+nvidia
+nvidia-utils
+lib32-nvidia-utils
+nvidia-settings
+vulkan-icd-launcher
+vulkan-tools

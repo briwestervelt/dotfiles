@@ -1,0 +1,32 @@
+
+# program launcher
+super + @space
+	rofi -show run -m -1
+
+# terminal emulator
+super + Return
+	alacritty
+
+# common apps
+super + alt + ctrl + {f,d,s}
+	{firefox,discord,steam}
+
+# power
+super + alt + shift + {p,r,s,h}
+	{poweroff,reboot,systemctl suspend, systemctl hibernate}
+
+# media keys
+{XF86AudioRaiseVolume, XF86AudioLowerVolume}
+	wpctl set-volume @DEFAULT_AUDIO_SINK@ 2.5%{+,-}
+XF86AudioMute
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+# close and kill
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# swap the current node and the biggest window
+# Overriden from base config so it's local to display
+super + g
+	bspc node -s biggest.local
+

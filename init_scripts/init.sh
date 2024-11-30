@@ -21,7 +21,7 @@ log_error () { echo "[ERROR] $@" | tee -a $LOGFILE; }
 
 run_cmd () {
     echo "[CMD] $@" | tee -a $LOGFILE
-    #eval "$@"
+    eval "$@"
     [ $? == 0 ] || log_warn Prev cmd failed!
 }
 
@@ -92,7 +92,7 @@ fi
 
 log_info Linking dotfiles
 run_cmd pushd $SCRIPT_PATH
-run_cmd stow .
+run_cmd ./link_dotfiles ~
 run_cmd popd
 
 log_info Initing services

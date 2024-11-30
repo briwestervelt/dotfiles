@@ -2,5 +2,5 @@ nvidia
 nvidia-utils
 lib32-nvidia-utils
 nvidia-settings
-vulkan-icd-launcher
+vulkan-icd-loader
 vulkan-tools

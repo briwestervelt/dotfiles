@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Adjust for hi res display and weak graphics card
+if echo $HOSTNAME | grep -q PC1; then
+    xrandr --output HDMI-0 --mode 1920x1080
+fi
+
 # Give slow monitors some time to wake up
 if echo $HOSTNAME | grep -q PC2; then
     bspc query -M > /dev/null

@@ -54,12 +54,8 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   command = "silent! normal! g`\"zv",
 })
 
-if os.getenv("DISPLAY") == nil then
-    vim.cmd.colorscheme("darkblue")
-else
-    vim.cmd.colorscheme("gruvbox")
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
-    vim.api.nvim_set_hl(0, "NonText", { bg = "none", ctermbg = "none" })
-end
+vim.cmd.colorscheme("gruvbox")
+vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
+vim.api.nvim_set_hl(0, "NonText", { bg = "none", ctermbg = "none" })
 

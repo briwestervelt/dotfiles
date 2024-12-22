@@ -13,5 +13,5 @@ vi
 vim
 which
 xorg
-xorg-init
+xorg-xinit
 xorg-server

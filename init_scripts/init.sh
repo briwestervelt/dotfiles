@@ -92,7 +92,7 @@ fi
 
 log_info Linking dotfiles
 run_cmd pushd $SCRIPT_PATH
-run_cmd ./link_dotfiles ~
+run_cmd ./link_dotfiles.sh ~
 run_cmd popd
 
 log_info Initing services

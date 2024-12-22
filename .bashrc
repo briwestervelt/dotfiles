@@ -19,10 +19,10 @@ alias mv='mv -i'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-alias ll='ls -l'
-alias lla='ls -la'
-alias lll='ls -ltr'
-alias llla='ls -ltra'
+alias ll='ls -hl'
+alias lla='ls -hla'
+alias lll='ls -hltr'
+alias llla='ls -hltra'
 alias vim='nvim'
 
 alias ":e"="vim"

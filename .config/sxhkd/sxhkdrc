@@ -21,6 +21,10 @@ super + alt + shift + {p,r,s,h}
 XF86AudioMute
 	wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
+# backlight keys
+{XF86MonBrightnessUp, XF86MonBrightnessDown}
+   brightnessctl -n1000 s 10%{+,-}
+
 # close and kill
 super + {_,shift + }q
 	bspc node -{c,k}

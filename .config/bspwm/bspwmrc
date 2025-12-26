@@ -5,15 +5,13 @@ if echo $HOSTNAME | grep -q PC1; then
     xrandr --output HDMI-0 --mode 1920x1080
 fi
 
-# Give slow monitors some time to wake up
-if echo $HOSTNAME | grep -q PC2; then
-    bspc query -M > /dev/null
-    sleep 3
-fi
-
 SYS_SXHKDRC=/usr/share/doc/bspwm/examples/sxhkdrc
 USR_SXHKDRC=~/.config/sxhkd/sxhkdrc
 pgrep -x sxhkd > /dev/null || sxhkd -c $USR_SXHKDRC $SYS_SXHKDRC &
+pgrep -x picom > /dev/null || picom --fade-delta=0 &
+
+BACKGROUND_IMG=$HOME/.background
+[[ -e $BACKGROUND_IMG ]] && feh --bg-scale $BACKGROUND_IMG
 
 bspc config border_width         1
 bspc config window_gap           2
@@ -35,7 +33,7 @@ bspc config presel_feedback_color   "#cc241d"
 NUM_DESKTOPS=10
 connected_displays=($(bspc query -M --names))
 num_displays=${#connected_displays[@]}
-desktops_per_disp=$(($NUM_DESKTOPS/$num_displays))
+desktops_per_disp=$(($NUM_DESKTOPS / $num_displays))
 label_start=1
 for disp in ${connected_displays[@]}; do
     label_end=$(($label_start + $desktops_per_disp - 1))

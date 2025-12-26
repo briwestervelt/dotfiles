@@ -9,11 +9,15 @@ super + Return
 
 # common apps
 super + alt + ctrl + {f,d,s}
-	{firefox,discord,steam}
+	{firefox, discord, steam}
+
+# file explorer dark mode
+super + alt + ctrl + e
+    GTK_THEME=Adwaita:dark nautilus
 
 # power
 super + alt + shift + {p,r,s,h}
-	{poweroff,reboot,systemctl suspend, systemctl hibernate}
+	{poweroff, reboot, systemctl suspend, systemctl hibernate}
 
 # media keys
 {XF86AudioRaiseVolume, XF86AudioLowerVolume}

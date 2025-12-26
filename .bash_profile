@@ -1,12 +1,22 @@
 
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 
-if [[ -z "$DISPLAY" ]]; then
+if [[ -z "$DISPLAY" && -z "$WAYLAND_DISPLAY" ]]; then
     ttyname=$(tty)
-    if [[ $ttyname == /dev/tty1 ]]; then
-        startx
-    elif [[ $ttyname == /dev/tty2 ]]; then
-        startx /home/$USER/.xinitrc.gnome
-    fi
+    case $ttyname in
+        /dev/tty1)
+            startx $HOME/.xinitrc
+            ;;
+        /dev/tty2)
+            # TODO: get gnome working eventually
+            if [[ $XDG_SESSION_TYPE == wayland ]]; then
+                MOZ_ENABLE_WAYLAND=1 \
+                QT_QPA_PLATFORM=wayland \
+                exec dbus-run-session gnome-session
+            else
+                echo "Wait a sec, tty2 is not wayland :("
+            fi
+            ;;
+    esac
 fi
 

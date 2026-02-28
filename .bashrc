@@ -2,7 +2,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1="\e[0;32m\u@\h\e[m \e[0;33m\w\e[m "
+P_GREEN='\[\033[0;32m\]'
+P_YELLOW='\[\033[0;33m\]'
+P_END='\[\033[0m\]'
+export PS1="${P_GREEN}\u@\h${P_END} ${P_YELLOW}\w${P_END} "
+unset P_GREEN P_YELLOW P_END
 
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/.local/bin"
